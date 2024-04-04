@@ -1,26 +1,37 @@
-// import { useSearchParams } from "react-router-dom";
-// import MovieList from "../../components/MovieList/MovieList";
-// import SearchBox from "../../components/SearchBox/SearchBox";
-// // import getMovies from api
+import { useSearchParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import MovieList from "../../components/MovieList/MovieList";
+import SearchBox from "../../components/SearchBox/SearchBox";
+import getMovies from "../../api/apiSearch";
+import Navigation from "../../components/Navigation/Navigation";
 
-// export default function Movies() {
-//   const movies = getMovies();
-//   const [searchParams, setSearchParams] = useSearchParams();
-//   const movieName = searchParams.get("name") ?? "";
+export default function Movies() {
+  const [movies, setMovie] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const movieName = searchParams.get("name") ?? "";
 
-//   const visibleProducts = movies.filter((product) =>
-//     product.name.toLowerCase().includes(movieName.toLowerCase())
-//   );
+  useEffect(() => {
+    getMovies(movieName, setMovie);
+  }, [movieName]);
 
-//   const updateQueryString = (name) => {
-//     const nextParams = name !== "" ? { name } : {};
-//     setSearchParams(nextParams);
-//   };
+  const visibleMovies = movies.filter((movie) =>
+    movie.original_title.toLowerCase().includes(movieName.toLowerCase())
+  );
 
-//   return (
-//     <main>
-//       <SearchBox value={movieName} onChange={updateQueryString} />
-//       <MovieList products={visibleProducts} />
-//     </main>
-//   );
-// }
+  const updateQueryString = (name) => {
+    const nextParams = name !== "" ? { name } : {};
+    setSearchParams(nextParams);
+  };
+
+  return (
+    <div>
+      <Navigation />
+
+      <main>
+        <SearchBox value={movieName} onChange={updateQueryString} />
+        <MovieList movies={visibleMovies} />
+      </main>
+    </div>
+  );
+}
+

@@ -1,19 +1,24 @@
-import { Link, useLocation } from 'react-router-dom';
-import css from './MovieList.module'
+import css from './MovieList.module.css'
+import { Link } from 'react-router-dom';
 
 const MovieList = ({ movies }) => {
-  const location = useLocation();
-
   return (
-    <div className={css.container}>
-      {movies.map((movie) => (
-        <div key={movie.id} className={css.cardWrapper}>
-          <Link to={`${movie.id}`} state={{ from: location }}>
-            <img src="" alt="" />
-            <h3 className={css.movieName}>{movie.name}</h3>
-          </Link>
-        </div>
-      ))}
+    <div className={css.movieContainer}>
+      <ul className={css.movieSearchList}>
+        {movies.map((movie) => (
+          <li key={movie.id} className={css.movieCardWrapper}>
+            <div className={css.movieImgBox}>
+              <img
+              src={`https://image.tmdb.org/t/p/w200${movie.backdrop_path}`}
+              alt={movie.original_title}
+              className={css.movieImg}
+              />
+            </div>
+            <Link to={'/movie/:movieId'} className={css.movieName}>{movie.original_title}</Link>
+            {/* <h3 className={css.movieName}>{movie.original_title}</h3> */}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
