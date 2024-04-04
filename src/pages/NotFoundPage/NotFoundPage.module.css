@@ -1,0 +1,16 @@
+.notFoundContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notFound {
+    color: black;
+    font-family: "Peralta", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.notFoundIcon {
+    margin-left: 20px;
+}
