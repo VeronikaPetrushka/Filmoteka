@@ -89,5 +89,9 @@
 
 .movieMoreItem:hover,
 .movieMoreItem:focus {
-    color: rgb(13, 10, 209);
+    color: white;
+    padding: 8px 16px;
+    border: 1px solid rgb(13, 10, 209);
+    background-color: rgb(13, 10, 209);
+    border-radius: 8px;
 }

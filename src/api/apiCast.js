@@ -14,7 +14,7 @@ const fetchMovieCast = (movieId, setCast) => {
   axios
     .get(url, options)
     .then((response) => {
-      const cast = response.data;
+      const cast = response.data.cast;
       setCast(cast);
     })
     .catch((err) => console.error(err));

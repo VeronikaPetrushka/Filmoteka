@@ -15,9 +15,19 @@ const MovieCast = () => {
     return <div>Loading...</div>;
   }
 
+    const updatedCast = cast.map((member) => {
+        const { id, name, character, profile_path } = member;
+        return {
+            id,
+            name,
+            character,
+            profile_path,
+        };
+    });
+
     return (
-        <div>
-          {cast.map((member) => (
+        <div className={css.castContainer}>
+          {updatedCast.map((member) => (
             <div key={member.id} className={css.castBox}>
                 <h3 className={css.castName}>{member.name}</h3>
                 <p className={css.castRole}>Character: {member.character}</p>
@@ -37,4 +47,3 @@ const MovieCast = () => {
 };
 
 export default MovieCast;
-

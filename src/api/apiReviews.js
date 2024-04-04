@@ -14,8 +14,8 @@ const fetchMovieReviews = (movieId, setReviews) => {
   axios
     .get(url, options)
     .then((response) => {
-      const cast = response.data;
-      setReviews(cast);
+      const reviews = response.data.results;
+      setReviews(reviews);
     })
     .catch((err) => console.error(err));
 };
