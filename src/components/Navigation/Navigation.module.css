@@ -1,0 +1,45 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid black;
+    gap: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 20px rgb(77, 77, 77);
+}
+
+.icon {
+    margin-right: 15px;
+}
+
+.navLink {
+    padding: 5px 20px;
+    display: flex;
+    text-decoration: none;
+    color: black;
+    background-color: transparent;
+    border: 1px solid rgb(13, 10, 209);
+    border-radius: 8px;
+    transition: all .3s;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.active {
+    color: white;
+    background-color: rgb(13, 10, 209);
+    outline: none;
+    text-decoration: none;
+}
+
+.navLink:focus,
+.active:focus {
+    color: white;
+}

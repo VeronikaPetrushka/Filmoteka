@@ -1,0 +1,38 @@
+.homeTitle {
+    color: black;
+    margin: 90px auto 20px;
+    font-family: "Peralta", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.homeList {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: start;
+}
+
+.iconItem {
+    margin-right: 20px;
+}
+
+.homeItemLink {
+    color: black;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+    /*  */
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeItemLink:hover,
+.homeItemLink:focus {
+    color: rgb(13, 10, 209);
+}
