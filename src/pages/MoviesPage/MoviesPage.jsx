@@ -4,23 +4,35 @@ import MovieList from "../../components/MovieList/MovieList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import getMovies from "../../api/apiSearch";
 import Navigation from "../../components/Navigation/Navigation";
+import NotFoundPage from "../NotFoundPage/NotFoundPage";
 
 export default function Movies() {
-  const [movies, setMovie] = useState([]);
+  const [movies, setMovies] = useState([]);
+  const [error, setError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get("name") ?? "";
 
   useEffect(() => {
-    getMovies(movieName, setMovie);
+    async function fetchMovies() {
+      try {
+        const data = await getMovies(movieName);
+        setMovies(data);
+      } catch (error) {
+        setError(true);
+      }
+    }
+
+    fetchMovies();
   }, [movieName]);
 
   const visibleMovies = movies.filter((movie) =>
     movie.original_title.toLowerCase().includes(movieName.toLowerCase())
   );
 
-  const updateQueryString = (name) => {
-    const nextParams = name !== "" ? { name } : {};
-    setSearchParams(nextParams);
+  const handleSearch = async (word) => {
+    setMovies([]);
+    setError(false);
+    setSearchParams({ name: word });
   };
 
   return (
@@ -28,10 +40,10 @@ export default function Movies() {
       <Navigation />
 
       <main>
-        <SearchBox value={movieName} onChange={updateQueryString} />
+        <SearchBox value={movieName} onSearch={handleSearch} />
         <MovieList movies={visibleMovies} />
+        {error && <NotFoundPage />}
       </main>
     </div>
   );
 }
-

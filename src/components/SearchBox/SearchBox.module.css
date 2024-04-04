@@ -1,3 +1,37 @@
+.searchContainer {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.searchIconPosition {
+    width: 240px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.searchBtn {
+    background-color: transparent;
+    border: none;
+    color: black;
+    outline: none;
+    padding: 10px;
+    z-index: 1000;
+    position: absolute;
+    right: 15px;
+    top: 18px;
+}
+
+.searchBtn:focus {
+    border-color: transparent;
+    outline: none;
+}
+
 .movieInput {
     background-color: transparent;
     border: 2px solid rgb(13, 10, 209);

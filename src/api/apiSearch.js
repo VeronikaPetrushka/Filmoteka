@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getMovies = (value, setMovie) => {
+const getMovies = async (value) => {
   const url = `https://api.themoviedb.org/3/search/movie?query=${value}&include_adult=false&language=en-US&page=1`;
 
   const options = {
@@ -11,13 +11,13 @@ const getMovies = (value, setMovie) => {
     },
   };
 
-  axios
-    .get(url, options)
-    .then((response) => {
-      const movie = response.data.results;
-      setMovie(movie);
-    })
-    .catch((err) => console.error(err));
+  try {
+    const response = await axios.get(url, options);
+    return response.data.results;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Failed to fetch movies");
+  }
 };
 
 export default getMovies;
