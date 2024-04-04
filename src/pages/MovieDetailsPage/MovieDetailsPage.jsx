@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 import fetchMovieDetails from "../../api/apiDetails";
 import fetchMoviePoster from "../../api/apiPoster";
 // import MovieCast from "../../components/MovieCast/MovieCast";
@@ -60,12 +60,13 @@ export default function MovieDetailsPage() {
       <div className={css.movieMoreBox}>
         <ul className={css.movieMoreList}>
             <li key={movieId}>
-              <Link to={`/movie/${movieId}/cast`} className={css.movieMoreItem}>Cast</Link>
+              <Link to={`cast`} className={css.movieMoreItem}>Cast</Link>
             </li>
             <li key={movieId}>
-              <Link to={`/movie/${movieId}/reviews`} className={css.movieMoreItem}>Reviews</Link>
+              <Link to={`reviews`} className={css.movieMoreItem}>Reviews</Link>
             </li>
         </ul>
+        <Outlet />
       </div>
           
     </div>
