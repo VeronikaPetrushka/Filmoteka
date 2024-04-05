@@ -13,13 +13,6 @@ const SearchBox = ({ onSearch }) => {
       return;
     }
 
-    const movieExists = false;
-
-    if (!movieExists) {
-      toast.error("No movie found. Please try a different search term!");
-      return;
-    }
-
     onSearch(movie);
     form.reset();
   };
