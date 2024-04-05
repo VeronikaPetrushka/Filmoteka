@@ -38,7 +38,7 @@ const MovieCast = () => {
           {updatedCast.map((member) => (
             <div key={member.id} className={css.castBox}>
                 <h3 className={css.castName}>{member.name}</h3>
-                <p className={css.castRole}>Character: {member.character}</p>
+                <p className={css.castRole}>{member.character}</p>
                 {member.profile_path && (
                     <div  className={css.castImgBox}>
                         <img
