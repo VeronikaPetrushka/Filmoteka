@@ -1,3 +1,10 @@
+.reviewsContentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .noReviews {
     color: black;
     font-family: "Lora", serif;
@@ -53,4 +60,20 @@
     font-weight: 400;
     font-style: normal;
     margin: 0;
+}
+
+.seeMoreReviewsBtn {
+    background-color: rgb(13, 10, 209);
+    border: 2px solid rgb(13, 10, 209);
+    color: white;
+    padding: 4px 12px;
+    outline: none;
+    margin-top: 20px;
+}
+
+.seeMoreReviewsBtn:hover,
+.seeMoreReviewsBtn:focus {
+    outline: none;
+    background-color: rgb(67, 64, 250);
+    border-color: rgb(67, 64, 250);
 }

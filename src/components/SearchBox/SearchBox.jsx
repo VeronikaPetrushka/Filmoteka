@@ -13,6 +13,13 @@ const SearchBox = ({ onSearch }) => {
       return;
     }
 
+    const movieExists = false;
+
+    if (!movieExists) {
+      toast.error("No movie found. Please try a different search term!");
+      return;
+    }
+
     onSearch(movie);
     form.reset();
   };
@@ -22,9 +29,6 @@ const SearchBox = ({ onSearch }) => {
       <form className={css.searchForm} onSubmit={handleSubmit}>
         <div className={css.searchContainer}>
           <div className={css.searchIconPosition}>
-            <button className={css.searchBtn} type="submit">
-              <IoSearch size="20" />
-            </button>
             <input
               className={css.movieInput}
               type="text"
@@ -33,6 +37,9 @@ const SearchBox = ({ onSearch }) => {
               placeholder="Type to search"
               name="movie"
             />
+            <button className={css.searchBtn} type="submit">
+              <IoSearch size="20" />
+            </button>
           </div>
         </div>
       </form>
