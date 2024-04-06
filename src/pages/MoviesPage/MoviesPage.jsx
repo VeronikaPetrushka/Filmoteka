@@ -5,6 +5,7 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import getMovies from "../../api/apiSearch";
 import Navigation from "../../components/Navigation/Navigation";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
+import { Toaster } from "react-hot-toast";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -41,6 +42,7 @@ export default function Movies() {
 
       <main>
         <SearchBox value={movieName} onSearch={handleSearch} />
+        <Toaster position="top-right"/>
         <MovieList movies={visibleMovies} />
         {error && <NotFoundPage />}
       </main>
