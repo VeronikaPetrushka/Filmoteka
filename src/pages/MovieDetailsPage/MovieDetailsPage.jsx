@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useLocation, Link, Outlet } from "react-router-dom";
 import fetchMovieDetails from "../../api/apiDetails";
 import fetchMoviePoster from "../../api/apiPoster";
@@ -9,7 +9,7 @@ export default function MovieDetailsPage() {
   const [movieDetails, setMovieDetails] = useState(null);
   const [posterUrl, setPosterUrl] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? "/";
+  const backLinkHref = useRef(location.state?.from ?? "/");
 
   useEffect(() => {
     fetchMovieDetails(movieId, setMovieDetails);
@@ -23,7 +23,7 @@ export default function MovieDetailsPage() {
   return (
     <div>
 
-      <Link to={backLinkHref} className={css.movieDetailsBack}>Back to movies</Link>
+      <Link to={backLinkHref.current} className={css.movieDetailsBack}>Back to movies</Link>
           
       <h2 className={css.movieDetailsName}>{movieDetails.title}</h2>
       
